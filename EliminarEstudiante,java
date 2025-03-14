@@ -1,0 +1,22 @@
+System.out.print("Ingrese la matrícula del estudiante a eliminar: ");
+String matriculaEliminar = scanner.nextLine();
+
+boolean estudianteEncontrado = false;
+for (int i = 0; i < numEstudiantes; i++) {
+    if (estudiantes[i].matricula.equals(matriculaEliminar)) {
+        // Se encontró el estudiante, se procede a eliminarlo
+        // Se desplazan los elementos del arreglo para no dejar "hueco"
+        for (int j = i; j < numEstudiantes - 1; j++) {
+            estudiantes[j] = estudiantes[j + 1];
+        }
+        // Se limpia la última posición (opcional)
+        estudiantes[numEstudiantes - 1] = null;
+        numEstudiantes--;
+        System.out.println("Estudiante eliminado con éxito.");
+        estudianteEncontrado = true;
+        break;
+    }
+}
+if (!estudianteEncontrado) {
+    System.out.println("No se encontró un estudiante con la matrícula ingresada.");
+}
